@@ -75,13 +75,13 @@ const userLogin = async (req, res) => {
                 .status(401)
                 .send({ status: false, message: "Incorrect password" });
         } else {
-            res.status(200).json({
-                _id: isValidUser._id,
+            res.status(200).json({ status: false, Message:
+                {_id: isValidUser._id,
                 employeeId: isValidUser.employeeId,
                 name: isValidUser.name,
                 email: isValidUser.email,
                 mobile: isValidUser.mobile,
-                token: generateToken(isValidUser._id)
+                token: generateToken(isValidUser._id)}
 
             })
 
