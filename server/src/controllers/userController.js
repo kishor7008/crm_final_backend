@@ -193,15 +193,13 @@ const myProfile = async (req, res) => {
 
 const employeeLeads = async (req, res) => {
     try {
-        //   
-        let responce = await Leads.find({ "employeeId": req.user.employeeId })
-        console.log(responce)
-        let leads = []
-        for (let i = 0; i < responce.length; i++) {
-            leads.push(responce[i].tasks[0])
-        }
-        res.json(leads)
-
+          let arr=[]
+        let responce = await Leads.find({ "employeeId": req.user.employeeId ,"status":req.params.status}).select({"tasks":1})
+       responce.map((item)=>{
+            // arr.push(...item.tasks)
+            arr.push(...item.tasks)
+        })
+        res.json(arr)
     } catch (error) {
         res.status(500).json(error)
     }

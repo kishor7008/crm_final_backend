@@ -14,7 +14,7 @@ router.post('/userLogin', userLogin);
 //to see own profile details
 router.get('/profile',protect, myProfile)
 //employee show own all leada
-router.get('/employee/leads',protect, employeeLeads)
+router.get('/employee/leads/:status',protect, employeeLeads)
 //employee see one particular lead
 router.post('/singleLead',protect, singleLead)
 //update status 
